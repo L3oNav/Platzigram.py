@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+<title>Platzigram feed</title>
+{% endblock %}
+
+{% block container %}
+    <div class="row pt-5">
+        {% for post in posts %}
+        <div class="col-lg-4 offset-lg-4 mb-5">
+            <div class="media d-flex align-items-lg-center">
+                <img class="mr-3 rounded-circle" src="{{ post.user.profile.picture.url }}" alt="{{ post.user.name }}" height="75" class="d-inline-block align-top rounded-circle">
+                <h5 class="mt-0">{{ post.user.username }}</h5>
+            </div>
+            <h6 class="ml-1 mt-3">{{ post.title }}</h6>
+            <img class="img-fluid mt-1 border rounded" src="{{ post.photo.url }}" alt="{{ post.title }}">
+                <div class="media-body d-flex justify-content-lg-between">
+                    {{ post.created }}
+                </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
